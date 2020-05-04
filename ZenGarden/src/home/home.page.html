@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-title style="text-align: center;">
+      ZEN GARDEN
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content color="secondary" [forceOverscroll]="false">
+  <ion-row>
+    <ion-col *ngFor="let color of colors" [style.background]="color" class="garden-block" tappable
+      (click)="selectColor(color)"></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col><ion-button expand="block" color="success" (click)="liner(2)">Toothpick</ion-button></ion-col>
+    <ion-col><ion-button expand="block"color="success" (click)="liner(10)">One-toothed Rake</ion-button></ion-col>
+    <ion-col><ion-button expand="block"color="success"  (click)="liner(40)">Plow</ion-button></ion-col>
+  </ion-row>
+
+
+ 
+  <canvas #imageCanvas (mousedown)="startDrawing($event)" (touchstart)="startDrawing($event)"
+    (touchmove)="moved($event)" (mousemove)="moved($event)" (mouseup)="endDrawing()" (touchend)="endDrawing()"></canvas>
+ <ion-row>
+  <ion-col>
+  <ion-button expand="full" color="success" (click)="exportCanvasImage()">
+    
+    Save Canvas Image
+  </ion-button>
+</ion-col>
+<ion-col>
+  <ion-button expand="full" color="success" [routerLink]="['/', 'list']">
+    
+    Gardens
+  </ion-button>
+</ion-col>
+</ion-row>
+</ion-content>
